@@ -1,0 +1,17 @@
+dashboard:
+  enabled: true
+service:
+  type: NodePort
+  port: 9000  # Puerto interno del servicio
+  nodePort: 30001  # Puerto NodePort que se expondrá en los nodos
+admin_api_version: "v3"
+ingress-controller:
+  enabled: true
+  config:
+    apisix:
+      serviceName: release-name-apisix-admin
+      adminAPIversion: v3
+    kubernetes:
+      enableGatewayAPI: true
+plugins:
+  - set-header
